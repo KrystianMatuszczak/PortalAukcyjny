@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,9 @@ Route::middleware('auth')->group(function () {
 Route::resource('categories', CategoryController::class)->only([
   'index'
 ]);
+
+Route::resource('products', ProductController::class)->only([
+    'index'
+  ]);
 
 require __DIR__.'/auth.php';
