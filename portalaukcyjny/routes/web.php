@@ -32,10 +32,10 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('categories', CategoryController::class)->only([
   'index'
-]);
+])->middleware(['auth', 'verified']);
 
 Route::resource('products', ProductController::class)->only([
     'index'
-  ]);
+  ])->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
