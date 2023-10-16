@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Categories;
 
 use App\Models\Category;
+use Livewire\WithPagination;
+use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 
 class CategoriesTableView extends TableView
 {
+  use WithPagination;
     /**
      * Sets a model class to get the initial data
      */
@@ -15,6 +18,7 @@ class CategoriesTableView extends TableView
     public $searchBy = [
       'name'
     ];
+    protected $paginate = 5;
 
     /**
      * Sets the headers of the table as you want to be displayed
@@ -24,7 +28,7 @@ class CategoriesTableView extends TableView
     public function headers(): array
     {
         return [
-          'Nazwa'
+          Header::title('Nazwa')->sortBy('name'),
         ];
     }
 
