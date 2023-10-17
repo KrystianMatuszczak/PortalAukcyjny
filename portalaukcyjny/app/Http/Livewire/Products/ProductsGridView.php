@@ -6,13 +6,22 @@ use App\Models\Product;
 use LaravelViews\Views\GridView;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Livewire\Products\Actions\EditProductAction;
+use App\Http\Livewire\Products\Actions\RestoreProductAction;
+use App\Http\Livewire\Products\Actions\SoftDeleteProductAction;
 
 class ProductsGridView extends GridView
 {
     protected $model = Product::class;
 
-    protected $paginate = 20;
+    protected $paginate = 12;
     public $maxCols = 3;
+
+    public $searchBy = [
+        'name',
+        'categories',
+        'descriptions'
+      ];
 
     public $cardComponent = 'livewire.products.grid-view-item';
 
@@ -40,5 +49,20 @@ class ProductsGridView extends GridView
     public function getPaginatedQueryProperty()
     {
         return $this->query->paginate($this->paginate);
+    }
+
+    protected function actionsByRow()
+    {
+        if(request()->user()->can('manage', Product::class))
+        {
+            return[
+                new EditProductAction(
+                    'products.edit', 
+                    __('Edytuj')
+                ),
+                new SoftDeleteProductAction(),
+                new RestoreProductAction(),
+            ];
+        } 
     }
 }

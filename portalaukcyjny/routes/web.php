@@ -34,8 +34,11 @@ Route::resource('categories', CategoryController::class)->only([
   'index'
 ])->middleware(['auth', 'verified']);
 
+Route::get('async/categories', [CategoryController::class, 'async'])
+  ->name('async.categories');
+
 Route::resource('products', ProductController::class)->only([
-    'index'
+    'index', 'create', 'edit'
   ])->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
