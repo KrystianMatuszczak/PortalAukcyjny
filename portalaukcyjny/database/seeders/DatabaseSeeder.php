@@ -3,9 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
+use PDO;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,5 +27,19 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(UserSeeder::class);
+
+        User::factory(10)->create()->each(function ($user) {
+            $user->assignRole(Role::findByName(config('auth.roles.user')));
+        });
+
+        $users = User::all()->filter(function($item){
+            if($item->id > 3)
+            {
+                return $item;
+            }
+        });
     }
 }
