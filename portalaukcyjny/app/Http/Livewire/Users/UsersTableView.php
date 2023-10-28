@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire\Users;
 
-use App\Http\Livewire\Users\Actions\AssignWorkerRoleAction;
-use App\Http\Livewire\Users\Actions\RemoveWorkerRoleAction;
 use App\Models\User;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
-use PhpParser\Node\Expr\FuncCall;
+use App\Http\Livewire\Users\Actions\AssignWorkerRoleAction;
+use App\Http\Livewire\Users\Actions\BlockUserAction;
+use App\Http\Livewire\Users\Actions\RemoveWorkerRoleAction;
+use App\Http\Livewire\Users\Actions\MarkUserAsTrustedAction;
+use App\Http\Livewire\Users\Actions\UnblockUserAction;
+use App\Http\Livewire\Users\Actions\UnmarkUserAsTrustedAction;
 
 class UsersTableView extends TableView
 {
@@ -44,7 +47,11 @@ class UsersTableView extends TableView
     {
         return [
             new AssignWorkerRoleAction,
-            new RemoveWorkerRoleAction
+            new RemoveWorkerRoleAction,
+            new MarkUserAsTrustedAction,
+            new UnmarkUserAsTrustedAction,
+            new BlockUserAction,
+            new UnblockUserAction
         ];
     }
 }

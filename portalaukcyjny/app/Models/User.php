@@ -44,8 +44,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function isWorker(): bool
+    {
+        return $this->hasRole(config('auth.roles.worker'));
+    }
+
     public function isAdmin(): bool
     {
         return $this->hasRole(config('auth.roles.admin'));
+    }
+
+    public function markAsTrusted() {
+      $this->trusted = true;
+      $this->save();
+    }
+
+    public function unmarkAsTrusted() {
+      $this->trusted = false;
+      $this->save();
+    }
+
+    public function block() {
+      $this->blocked = true;
+      $this->save();
+    }
+    
+    public function unblock() {
+      $this->blocked = false;
+      $this->save();
     }
 }

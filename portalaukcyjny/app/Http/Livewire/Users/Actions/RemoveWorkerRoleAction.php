@@ -9,7 +9,7 @@ use LaravelViews\Views\View;
 class RemoveWorkerRoleAction extends Action
 {
     public $title = '';
-    public $icon = 'user-x';
+    public $icon = 'user-minus';
     public function __construct() {
         parent::__construct();
         $this->title = 'Usuń role pracownika';
