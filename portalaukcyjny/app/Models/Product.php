@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Storage;
 
 
 class Product extends Model
@@ -16,10 +18,36 @@ class Product extends Model
     protected $fillable = [
         'name',
         'description',
+        'image'
     ];
 
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    protected function image(): Attribute{
+        return Attribute::make(
+            get: function ($value)
+            {
+            if($value === null)
+            {
+                return null;
+            }      
+            return config('filesystems.images_dir')
+                . '/' . $value;
+            },
+        );
+    }
+
+    public function imageUrl(): String{
+        return $this->imageExists()
+            ? Storage::url($this->image)
+            : Storage::url(config('app.no_image'));
+    }
+
+    public function imageExists(): bool{
+        return $this->image !== null    
+            && Storage::disk('public')->exists($this->image);
     }
 }

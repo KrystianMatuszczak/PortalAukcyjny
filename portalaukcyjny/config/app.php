@@ -212,4 +212,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'no_image' =>env('NO_IMAGE', 'no-image.png'),
+
 ];

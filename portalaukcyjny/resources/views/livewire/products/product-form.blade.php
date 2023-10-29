@@ -67,7 +67,7 @@
             <div class="">
         @if ($imageExists)
             <div class="relative">
-                <img class="w-full" src="{{ $imageUrl }}" alt="{{ $car->name }}">
+                <img class="w-full" src="{{ $imageUrl }}" alt="{{ $product->name }}">
                 <div class="absolute top-2 right-2 h-16"> 
                 <x-button.circle outline xs secondary icon="trash" wire:click="deleteImageConfirm" />
             </div>

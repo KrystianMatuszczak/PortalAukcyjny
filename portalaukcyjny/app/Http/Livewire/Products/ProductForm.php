@@ -40,12 +40,6 @@ class ProductForm extends Component
                 'string',
                 'max:190',
             ],
-            'product.price' => [
-                'required',
-                'numeric',
-                'gt:0',
-                'max:100000',
-            ],
             'categoriesIds' => [
                 'required',
                 'array',
@@ -63,7 +57,6 @@ class ProductForm extends Component
         return [
             'name' => Str::lower(__('Nazwa Modelu')),
             'description' => Str::lower(__('Opis')),
-            'price' => Str::lower(__('Cena')),
             'categoriesIds' => Str::lower(__('Kategorie')),
             'images' => Str::lower(__('Obraz')),
         ];
@@ -72,9 +65,8 @@ class ProductForm extends Component
     public function mount(Product $product, Bool $editMode)
     {
         $this->product = $product;
-        $this->product->load('categories');
-        //$this->categoriesIds = $this->product->categories->toArray();
-        //$this->imageChange();
+        $this->categoriesIds = $this->product->categories->toArray();
+        $this->imageChange();
         $this->editMode = $editMode;
     }
     
@@ -126,8 +118,8 @@ class ProductForm extends Component
                 ? __('Zaktualizowano')
                 : __('Utworzono'),
             $description = $this->editMode
-                ? __('Zaktualizowano produkt ', ['name' => $this->product->name])
-                : __('Dodano produkt ', ['name' => $this->product->name])
+                ? __('Zaktualizowano  ', ['name' => $this->product->name])
+                : __('Dodano ', ['name' => $this->product->name])
         );
         $this->editMode = true;
         $this->imageChange();

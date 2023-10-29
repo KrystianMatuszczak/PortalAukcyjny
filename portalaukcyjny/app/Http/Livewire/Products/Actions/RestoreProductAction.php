@@ -16,7 +16,7 @@ class RestoreProductAction extends RestoreAction
     protected function dialogDescription(Model $model): String
     {
         return __('Napewno?',[
-            'name' => $model
+            'name' => $model->name
         ]);
     }
 }
