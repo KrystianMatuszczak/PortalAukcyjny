@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Repositories\CategoryRepository;
+
 
 class CategoryController extends Controller
 {
@@ -15,31 +17,40 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny',Category::class);
       return view('categories.index');
     }
 
-    public function async(Request $request)
+    // public function async(Request $request)
+    // {
+    //     return Category::query()
+    //         ->select('id', 'name')
+    //         ->orderBy('name')
+    //         ->when(
+    //             $request->search,
+    //             fn(Builder $query) => $query->where('name', 'like', '%{$request->search}%')
+    //         )->when(
+    //             $request->exists('selected'),
+    //             fn(Builder $query) => $query->whereIn(
+    //                 'id',
+    //                 array_map(
+    //                     fn(array $item) => $item['id'],
+    //                     array_filter(
+    //                         $request->input('selected', []),
+    //                         fn($item) => (is_array($item) && isset($item['id']))
+    //                     )
+    //                 )
+    //             ),
+    //             fn(Builder $query) => $query->limit(10)
+    //         )->get();
+    // }
+    public function async(Request $request, CategoryRepository $repository)
     {
-        return Category::query()
-            ->select('id', 'name')
-            ->orderBy('name')
-            ->when(
-                $request->search,
-                fn(Builder $query) => $query->where('name', 'like', '%{$request->search}%')
-            )->when(
-                $request->exists('selected'),
-                fn(Builder $query) => $query->whereIn(
-                    'id',
-                    array_map(
-                        fn(array $item) => $item['id'],
-                        array_filter(
-                            $request->input('selected', []),
-                            fn($item) => (is_array($item) && isset($item['id']))
-                        )
-                    )
-                ),
-                fn(Builder $query) => $query->limit(10)
-            )->get();
+        $this->authorize('viewAny',Category::class);
+        return $repository->async(
+            $request->search,
+            $request->input('selected',[])
+        );
     }
 
     /**
@@ -49,7 +60,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'categories.form'
+        );
     }
 
     /**
@@ -82,7 +95,13 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $this->authorize('update',$category);
+        return view(
+            'categories.form',
+            [
+                'category'=>$category
+            ]
+            );
     }
 
     /**
@@ -103,7 +122,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
     }

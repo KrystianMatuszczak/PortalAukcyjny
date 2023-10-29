@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::resource('categories', CategoryController::class)->only([
-  'index'
+  'index', 'create', 'edit'
 ])->middleware(['auth', 'verified']);
 
 Route::get('async/categories', [CategoryController::class, 'async'])

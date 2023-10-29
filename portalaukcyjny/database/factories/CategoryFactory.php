@@ -17,8 +17,22 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        return [
-          'name' => Str::random(10)
-        ];
+      return [
+        'name'=>$this->faker->unique()->word(100),
+        'created_at'=>$this->faker->dateTimeBetween(
+            '- 8 weeks',
+            '- 4 weeks',
+        ),
+        'updated_at'=>$this->faker->dateTimeBetween(
+            '- 4 weeks',
+            '- 1 week',
+        ),
+        'deleted_at'=>rand(0,10)===0
+            ?$this->faker->dateTimeBetween(
+                '- 1 week',
+                '+ 2 weeks',
+            )
+            : null
+    ];
     }
 }
