@@ -11,15 +11,15 @@
         <div class="grid grid-cols-2 gap-2">
 
             <div class="">
-                <label form="name">{{ __('Nazwa: ')}} </label>
+                <label form="name">{{ __('Nazwa')}} </label>
             </div>
 
             <div class="">
-                <x-input placeholder="{{ __('Wprowadź nazwę: ')}}" wire:model="product.name" />
+                <x-input placeholder="{{ __('Wprowadź nazwę')}}" wire:model="product.name" />
             </div>
         </div>
 
-    <hr class="my-2">
+        <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
 
             <div class="">
@@ -27,27 +27,15 @@
             </div>
 
             <div class="">
-                <x-textarea placeholder="{{ __('Wprowadź Opis')}}" wire:model="product.description" />
+                <x-textarea placeholder="{{ __('Wprowadź opis')}}" wire:model="product.description" />
             </div>
         </div>
 
-    {{-- <hr class="my-2">
-        <div class="grid grid-cols-2 gap-2"> --}}
-
-            {{-- <div class="">
-                <label form="price">{{ __('Cena')}} </label>
-            </div>
-
-            <div class="">
-                <x-inputs.currency thousands=" " precision="2" placeholder="{{ __('Wprowadź Cene')}}" wire:model="product.price" />
-            </div>
-        </div> --}}
-
-    <hr class="my-2">
+        <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
 
             <div class="">
-                <label form="categories">{{ __('Wybierz Kategorie')}} </label>
+                <label form="categories">{{ __('Kategorie')}} </label>
             </div>
 
             <div class="">
@@ -56,6 +44,42 @@
                  />
             </div>
         </div>
+
+     <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+
+        <div class="">
+                <label form="price">{{ __('Cena')}} </label>
+            </div>
+
+            <div class="">
+                <x-inputs.currency thousands=" " precision="2" placeholder="{{ __('Wprowadź Cenę')}}" wire:model="product.price" />
+            </div>
+        </div>
+
+        <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+
+        <div class="">
+            <label form="amount">{{ __('Ilość')}} </label>
+        </div>
+
+        <div class="">
+            <x-inputs.currency thousands=" " precision="2" placeholder="{{ __('Wprowadź ilość produktów na sprzedaz')}}" wire:model="product.amount" />
+        </div>
+    </div>
+
+    <hr class="my-2">
+    <div class="grid grid-cols-2 gap-2">
+
+        <div class="">
+            <label form="localization">{{ __('Lokalizacja')}} </label>
+        </div>
+
+        <div class="">
+            <x-input placeholder="{{ __('Wprowadź lokalizację produktu')}}" wire:model="product.localization" />
+        </div>
+    </div>
 
     <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">

@@ -44,6 +44,24 @@ class ProductForm extends Component
                 'required',
                 'array',
             ],
+            'product.price' => [
+                'required',
+                'numeric',
+                'gt:0',
+                'max:100000',
+            ],
+            'product.amount' => [
+                'required',
+                'numeric',
+                'gt:0',
+                'max:100000',
+            ],
+            'product.localization' => [
+                'required',
+                'string',
+                'min:2',
+                'max:100',
+            ],
             'image' => [
                 'nullable',
                 'image',
@@ -58,6 +76,9 @@ class ProductForm extends Component
             'name' => Str::lower(__('Nazwa Modelu')),
             'description' => Str::lower(__('Opis')),
             'categoriesIds' => Str::lower(__('Kategorie')),
+            'price' => Str::lower(__('Cena')),
+            'amount' => Str::lower(__('Ilość')),
+            'localization' => Str::lower(__('Lokalizacja')),
             'images' => Str::lower(__('Obraz')),
         ];
     }

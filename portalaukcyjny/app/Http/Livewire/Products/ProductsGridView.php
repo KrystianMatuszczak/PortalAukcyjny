@@ -29,7 +29,9 @@ class ProductsGridView extends GridView
     public $searchBy = [
         'name',
         'categories.name',
-        'descriptions'
+        'price',
+        'localization',
+        'description'
       ];
 
     public function repository(): Builder
@@ -50,6 +52,9 @@ class ProductsGridView extends GridView
             'title' =>$model->name,
             'description' => $model->description,
             'categories' => $model->categories,
+            'price' => $model->price,
+            'amount' => $model->amount,
+            'localization' => $model->localization,
         ];
     }
 

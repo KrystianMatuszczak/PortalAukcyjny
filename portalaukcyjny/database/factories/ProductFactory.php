@@ -19,6 +19,9 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'description' => $this->faker->optional->text(50),
+            'price' => $this->faker->randomFloat(2, 10, 100),
+            'amount' => $this->faker->numberBetween(1, 100),
+            'localization' => $this->faker->city(),
             'created_at' => $this->faker->dateTimeBetween(
                 '- 8 weeks',
                 '- 4 weeks',

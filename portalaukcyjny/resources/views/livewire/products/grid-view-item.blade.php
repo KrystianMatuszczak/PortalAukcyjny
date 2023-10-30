@@ -1,6 +1,9 @@
 @props([
   'image' => '',
   'title' => '',
+  'price' => '',
+  'amount' => '',
+  'localization' => '',
   'description' => '',
   'withBackground' => false,
   'model',
@@ -29,6 +32,17 @@
           @else
             {!! $title !!}
           @endif
+          @if ($price)
+          <span class="flex justify-end text-sm text-gray-600">
+          {{__('Cena')}}: {!! $price !!}
+          {{ __('PLN')}}
+          </span>
+          <span class="flex justify-end text-sm text-gray-600">
+            {{__('Szt. ')}}: {!! $amount !!}
+            
+            </span>
+        @endif
+
         </h3>
         @if ($categories)
             <span class="flex justify-end text-sm text-gray-600">
@@ -53,6 +67,11 @@
         {!! $description !!}
       </p>
     @endif
+
+    <span class="flex justify-center text-sm text-black-500 bg-gray-100">
+      {!! $localization !!}
+      
+      </span>
   </div>
 
 </div>
