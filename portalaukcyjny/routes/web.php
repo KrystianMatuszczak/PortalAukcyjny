@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ShipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +41,15 @@ Route::resource('categories', CategoryController::class)->only([
   'index', 'create', 'edit'
 ])->middleware(['auth', 'verified']);
 
+Route::resource('shipments', ShipmentController::class)->only([
+  'index', 'create', 'edit'
+])->middleware(['auth', 'verified']);
+
 Route::get('async/categories', [CategoryController::class, 'async'])
   ->name('async.categories');
+
+  Route::get('async/shipments', [ShipmentController::class, 'async'])
+  ->name('async.shipments');
 
 Route::resource('products', ProductController::class)->only([
     'index', 'create', 'edit'

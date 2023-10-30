@@ -3,12 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use PDO;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
-use PDO;
+use Database\Seeders\ShipmentSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call(CategorySeeder::class);
+        $this->call(ShipmentSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
