@@ -26,8 +26,8 @@ class UsersTableView extends TableView
     public function headers(): array
     {
         return[
-            Header::title('Imie i nazwisko'),
-            Header::title('Adres email'),
+            Header::title('Imie i nazwisko')->sortBy('name'),
+            Header::title('Adres email')->sortBy('email'),
             Header::title('Role'),
             Header::title('Utworzono')
         ];
