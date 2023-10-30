@@ -13,7 +13,7 @@ class SoftDeleteFilter extends Filter
     public function __construct()
     {
         parent::__construct();
-        $this->title = __('Kategorie usunięte');
+        $this->title = __('translation.attribute.deleted_at');
     }
 
     public function apply(Builder $query, $value, $request): Builder 
@@ -27,8 +27,8 @@ class SoftDeleteFilter extends Filter
     public function options()
     {
         return[
-            __('Tak')=>1,
-            __('Nie')=>0,
+            __('translation.yes')=>1,
+            __('translation.no')=>0,
         ];
     }
 }
