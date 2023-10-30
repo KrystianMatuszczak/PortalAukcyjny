@@ -15,6 +15,20 @@ class ShipmentSeeder extends Seeder
      */
     public function run()
     {
-        Shipment::factory()->count(10)->create();
+        $csvFile = fopen(base_path("resources/csv/shipment.csv"), 'r');
+
+        $firstLine = false;
+        while(($data = fgetcsv($csvFile, 100, ';')) !== FALSE) {
+            if (!$firstLine) {
+                Shipment::create(
+                    [
+                        'name' => $data['0'],
+                        'shipPrice' => $data['1']
+                    ]);
+            }
+            $firstLine = false;
+        }
+
+        fclose($csvFile);
     }
 }

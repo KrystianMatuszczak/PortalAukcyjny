@@ -18,8 +18,6 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $categories = Category::all();
-        $shipments = Shipment::all();
-
         Product::factory()
             ->count(15)
             ->create()
