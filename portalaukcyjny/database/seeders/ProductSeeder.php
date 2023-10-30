@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Shipment;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -17,6 +18,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $categories = Category::all();
+        $shipments = Shipment::all();
 
         Product::factory()
             ->count(15)

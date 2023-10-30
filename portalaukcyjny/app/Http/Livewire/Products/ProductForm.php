@@ -20,6 +20,7 @@ class ProductForm extends Component
 
     public Product $product;
     public $categoriesIds;
+    public $shipmentsIds;
     public Bool $editMode;
     public $image;
 
@@ -41,6 +42,10 @@ class ProductForm extends Component
                 'max:190',
             ],
             'categoriesIds' => [
+                'required',
+                'array',
+            ],
+            'shipmentsIds' => [
                 'required',
                 'array',
             ],
@@ -76,6 +81,7 @@ class ProductForm extends Component
             'name' => Str::lower(__('Nazwa Modelu')),
             'description' => Str::lower(__('Opis')),
             'categoriesIds' => Str::lower(__('Kategorie')),
+            'shipmentsIds' => Str::lower(__('Metody dostawy')),
             'price' => Str::lower(__('Cena')),
             'amount' => Str::lower(__('Ilość')),
             'localization' => Str::lower(__('Lokalizacja')),
@@ -87,6 +93,7 @@ class ProductForm extends Component
     {
         $this->product = $product;
         $this->categoriesIds = $this->product->categories->toArray();
+        $this->shipmentsIds = $this->product->shipments->toArray();
         $this->imageChange();
         $this->editMode = $editMode;
     }
@@ -112,8 +119,9 @@ class ProductForm extends Component
 
         $image = $this->image;
         $categoriesIds = $this->categoriesIds;
+        $shipmentsIds = $this->shipmentsIds;
         $product = $this->product;
-        DB::transaction(function() use ($product, $categoriesIds, $image)
+        DB::transaction(function() use ($product, $categoriesIds, $shipmentsIds ,$image)
         {
             $product->save();
             if($image !== null)
@@ -123,6 +131,8 @@ class ProductForm extends Component
                 $product->save();
             }
             $product->categories()->sync($categoriesIds);
+            $product->shipments()->sync($shipmentsIds);
+            
         });
 
         if($this->image !== null)

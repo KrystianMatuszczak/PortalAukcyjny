@@ -81,6 +81,22 @@
         </div>
     </div>
 
+
+    <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+
+            <div class="">
+                <label form="shipments">{{ __('Metody Dostawy')}} </label>
+            </div>
+
+            <div class="">
+                <x-select multiselect placeholder="{{ __('Wybierz...')}}" wire:model="shipmentsIds"
+                :async-data="route('async.shipments')" option-label="name" option-value="id"
+                 />
+            </div>
+        </div>
+
+
     <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
 
