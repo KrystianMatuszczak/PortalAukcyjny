@@ -32,16 +32,16 @@ class ProductsGridView extends GridView
         'descriptions'
       ];
 
-    // public function repository(): Builder
-    // {
-    //     $query = Product::query()
-    //         ->with(['categories']);
-    //     if(request()->user()->can('manage', Product::class))
-    //     {
-    //         $query->withTrashed();
-    //     }
-    //     return $query;
-    // }
+    public function repository(): Builder
+    {
+        $query = Product::query()
+            ->with(['categories']);
+        if(request()->user()->can('manage', Product::class))
+        {
+            $query->withTrashed();
+        }
+        return $query;
+    }
 
     public function card($model)
     {

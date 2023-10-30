@@ -15,7 +15,7 @@ class RestoreProductAction extends RestoreAction
 
     protected function dialogDescription(Model $model): String
     {
-        return __('Napewno?',[
+        return __('Produkt :name zostanie przywrócony, czy chcesz kontynuować?',[
             'name' => $model->name
         ]);
     }

@@ -14,7 +14,7 @@ class SoftDeleteProductAction extends SoftDeleteAction
 
     protected function dialogDescription(Model $model): String
     {
-        return __('Produkt zostanie usuniety, czy chcesz kontynuowac?',[
+        return __('Produkt :name zostanie usuniety, czy chcesz kontynuowac?',[
             'name' => $model->name
         ]);
     }
