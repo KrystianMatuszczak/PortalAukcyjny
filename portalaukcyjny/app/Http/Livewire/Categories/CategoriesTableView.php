@@ -28,9 +28,7 @@ class CategoriesTableView extends TableView
 
     public $searchBy = [
       'name',
-      'created_at',
-      'updated_at',
-      'deleted_at',
+
     ];
     protected $paginate = 5;
 
@@ -49,9 +47,7 @@ class CategoriesTableView extends TableView
     {
         return [
           Header::title('Nazwa')->sortBy('name'),
-          Header::title(__('translation.attributes.created_at'))->sortBy('created_at'),
-          Header::title(__('categories.atrributes.updated_at'))->sortBy('updated_at'),
-          Header::title(__('translation.attributes.deleted_at'))->sortBy('deleted_at'),
+
         ];
     }
 
@@ -64,9 +60,7 @@ class CategoriesTableView extends TableView
     {
         return [
           $model->name,
-          $model->created_at,
-          $model->updated_at,
-          $model->deleted_at,
+
         ];
     }
     protected function filters ()
