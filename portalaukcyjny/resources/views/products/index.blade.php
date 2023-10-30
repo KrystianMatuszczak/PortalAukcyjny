@@ -10,8 +10,10 @@
             </div>
               <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="grid justify-items-stretch pt-2 pr-2">
+                  @can('create', App\Models\Product::class)
                   <x-button primary label="{{ __('Dodaj Produkt')}}" 
                   href="{{ route('products.create')}}" class="justify-self-end"  />
+                  @endcan
               </div>
                 <livewire:products.products-grid-view />
               </div>
