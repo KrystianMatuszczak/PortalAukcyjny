@@ -24,12 +24,16 @@
                         {{ __('Kategorie') }}
                     </x-nav-link>
 
+                    <x-nav-link href="{{ route('conditions.index') }}" :active="request()->routeIs('conditions.index')">
+                        {{ __('Stany') }}
+                    </x-nav-link>
+
                     <x-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                         {{ __('Produkty') }}
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('shipments.index') }}" :active="request()->routeIs('shipments.index')">
-                        {{ __('Metody Dostawy') }}
+                        {{ __('Metody dostawy') }}
                     </x-nav-link>
                 </div>
             </div>

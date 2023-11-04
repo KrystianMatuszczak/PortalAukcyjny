@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\ShipmentSeeder;
+use Database\Seeders\ConditionSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call(CategorySeeder::class);
+        $this->call(ConditionSeeder::class);
         $this->call(ShipmentSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(RoleSeeder::class);

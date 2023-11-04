@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConditionContoller;
 use App\Http\Controllers\ShipmentController;
 
 /*
@@ -40,6 +41,10 @@ Route::middleware('auth')->group(function () {
 Route::resource('categories', CategoryController::class)->only([
   'index', 'create', 'edit'
 ])->middleware(['auth', 'verified']);
+
+Route::resource('conditions', ConditionContoller::class)->only([
+  'index'
+]);
 
 Route::resource('shipments', ShipmentController::class)->only([
   'index', 'create', 'edit'
