@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Livewire\Users\Filters;
+
+use LaravelViews\Filters\Filter;
+use Spatie\Permission\Models\Role;
+use PhpParser\Node\Expr\Cast\Array_;
+use Illuminate\Database\Eloquent\Builder;
+
+class UserRoleFilter extends Filter
+{
+    public $title = '';
+    public function __construct()
+    {
+        $this->title = 'Role';
+    }
+    public function apply(Builder $query, $value, $request) : Builder
+    {
+        return $query->whereHas('roles', function (Builder $query) use ($value){
+            $query->where('id','=',$value);
+        });
+    }
+    public function options() : Array
+    {
+        $roles = Role::all();
+        $labels = $roles->pluck('name');
+        $values = $roles->pluck('id');
+
+        return $labels->combine($values)->toArray();
+    }
+
+}

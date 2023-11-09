@@ -11,6 +11,7 @@ use App\Http\Livewire\Users\Actions\RemoveWorkerRoleAction;
 use App\Http\Livewire\Users\Actions\MarkUserAsTrustedAction;
 use App\Http\Livewire\Users\Actions\UnblockUserAction;
 use App\Http\Livewire\Users\Actions\UnmarkUserAsTrustedAction;
+use App\Http\Livewire\Users\Filters\UserRoleFilter;
 
 class UsersTableView extends TableView
 {
@@ -42,7 +43,12 @@ class UsersTableView extends TableView
             $model->created_at,
         ];
     }
-
+    protected function filters()
+    {
+        return [
+            new UserRoleFilter
+        ];
+    }
     protected function actionsByRow()
     {
         return [
