@@ -50,6 +50,13 @@
                        <span class="mr-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">{{ $category->name }}</span>
                    @endforeach
                </span>
+               <hr class="my-2">
+                <span class="flex justify-end text-sm text-gray-600">
+                    {{ __('Stany:') }}
+                   @foreach ($product->conditions as $condition )
+                       <span class="mr-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">{{ $condition->name }}</span>
+                   @endforeach
+               </span>
                 <hr class="my-2">
                 <div class="flex justify-center pt-2 pb-2">
                 <x-button href="{{ url()->previous() }}" secondary class="mr-2" label="Wróć" />

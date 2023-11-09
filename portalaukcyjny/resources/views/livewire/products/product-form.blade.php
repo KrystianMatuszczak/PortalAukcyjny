@@ -45,6 +45,20 @@
             </div>
         </div>
 
+        <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+
+            <div class="">
+                <label form="conditions">{{ __('Stan')}} </label>
+            </div>
+
+            <div class="">
+                <x-select multiselect placeholder="{{ __('Wybierz...')}}" wire:model="conditionsIds"
+                :async-data="route('async.conditions')" option-label="name" option-value="id"
+                 />
+            </div>
+        </div>
+
      <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
 

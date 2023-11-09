@@ -5,8 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ConditionContoller;
 use App\Http\Controllers\ShipmentController;
+use App\Http\Controllers\ConditionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +42,9 @@ Route::resource('categories', CategoryController::class)->only([
   'index', 'create', 'edit'
 ])->middleware(['auth', 'verified']);
 
-Route::resource('conditions', ConditionContoller::class)->only([
-  'index'
-]);
+Route::resource('conditions', ConditionController::class)->only([
+  'index', 'create', 'edit'
+])->middleware(['auth', 'verified']);
 
 Route::resource('shipments', ShipmentController::class)->only([
   'index', 'create', 'edit'
@@ -52,6 +52,9 @@ Route::resource('shipments', ShipmentController::class)->only([
 
 Route::get('async/categories', [CategoryController::class, 'async'])
   ->name('async.categories');
+
+  Route::get('async/conditions', [ConditionController::class, 'async'])
+  ->name('async.conditions');
 
   Route::get('async/shipments', [ShipmentController::class, 'async'])
   ->name('async.shipments');

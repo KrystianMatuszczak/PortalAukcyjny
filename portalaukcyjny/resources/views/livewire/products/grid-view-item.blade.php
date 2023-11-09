@@ -50,6 +50,17 @@
         @endif
       </div>
 
+      @if ($conditions)
+            <span class="flex justify-end text-sm text-gray-600">
+                @foreach ($conditions as $condition)
+                <span class="mr-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">{{$condition->name}}
+                </span>
+                    
+                @endforeach
+            </span>
+        @endif
+      </div>
+
       @if (count($actions))
         <div class="flex justify-end items-center">
           <x-lv-actions.drop-down :actions="$actions" :model="$model" />

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Condition;
 use Illuminate\Http\Request;
+use App\Http\Repositories\ConditionRepository;
 
-class ConditionContoller extends Controller
+class ConditionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,17 @@ class ConditionContoller extends Controller
      */
     public function index()
     {
-      return view('conditions.index');
+        $this->authorize('viewAny',Condition::class);
+        return view('conditions.index');
+    }
+
+    public function async(Request $request, ConditionRepository $repository)
+    {
+        $this->authorize('viewAny',Condition::class);
+        return $repository->async(
+            $request->search,
+            $request->input('selected',[])
+        );
     }
 
     /**
@@ -24,7 +35,9 @@ class ConditionContoller extends Controller
      */
     public function create()
     {
-        //
+        return view(
+            'conditions.form'
+        );
     }
 
     /**
@@ -57,7 +70,13 @@ class ConditionContoller extends Controller
      */
     public function edit(Condition $condition)
     {
-        //
+        $this->authorize('update',$condition);
+        return view(
+            'conditions.form',
+            [
+                'condition'=>$condition
+            ]
+            );
     }
 
     /**

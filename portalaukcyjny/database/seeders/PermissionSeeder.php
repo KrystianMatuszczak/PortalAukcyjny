@@ -17,6 +17,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'products.manage']);
         Permission::create(['name' => 'categories.index']);
         Permission::create(['name' => 'categories.manage']);
+        Permission::create(['name' => 'conditions.index']);
+        Permission::create(['name' => 'conditions.manage']);
         Permission::create(['name' => 'shipments.index']);
         Permission::create(['name' => 'shipments.manage']);
         $adminRole = Role::findByName(config('auth.roles.admin'));
@@ -27,6 +29,8 @@ class PermissionSeeder extends Seeder
         $adminRole->givePermissionTo('products.manage');
         $adminRole->givePermissionTo('categories.index');
         $adminRole->givePermissionTo('categories.manage');
+        $adminRole->givePermissionTo('conditions.index');
+        $adminRole->givePermissionTo('conditions.manage');
         $adminRole->givePermissionTo('shipments.index');
         $adminRole->givePermissionTo('shipments.manage');
         $adminRole->givePermissionTo('users.change_role');

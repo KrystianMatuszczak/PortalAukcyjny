@@ -29,6 +29,7 @@ class ProductsGridView extends GridView
     public $searchBy = [
         'name',
         'categories.name',
+        'coniditions.name',
         'price',
         'localization',
         'description'
@@ -37,7 +38,7 @@ class ProductsGridView extends GridView
     public function repository(): Builder
     {
         $query = Product::query()
-            ->with(['categories']);
+            ->with(['categories','conditions']);
         if(request()->user()->can('manage', Product::class))
         {
             $query->withTrashed();
@@ -52,6 +53,7 @@ class ProductsGridView extends GridView
             'title' =>$model->name,
             'description' => $model->description,
             'categories' => $model->categories,
+            'conditions' => $model->conditions,
             'price' => $model->price,
             'amount' => $model->amount,
             'localization' => $model->localization,
