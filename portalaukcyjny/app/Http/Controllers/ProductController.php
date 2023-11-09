@@ -44,4 +44,14 @@ class ProductController extends Controller
         'product' => $product
     ]);
     }
+    public function show($id)
+    {
+        $this->authorize('viewAny', Product::class);
+        $product = Product::find($id);
+        $view = view('products.show',['product' => $product]);
+        if($product === null)
+            return view('products.index');
+        else
+            return $view;
+    }
 }

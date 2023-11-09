@@ -57,7 +57,7 @@ Route::get('async/categories', [CategoryController::class, 'async'])
   ->name('async.shipments');
 
 Route::resource('products', ProductController::class)->only([
-    'index', 'create', 'edit'
+    'index', 'create', 'edit', 'show'
   ])->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
