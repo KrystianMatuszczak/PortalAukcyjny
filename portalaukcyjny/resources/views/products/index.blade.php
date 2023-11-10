@@ -11,7 +11,7 @@
       href="{{ route('products.create')}}" class="justify-self-end"  />
       @endcan
     </div>
-    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg pt-4 pl-3">
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg pt-4 pl-3 p-4">
       <livewire:products.products-grid-view />
     </div>
   </div>

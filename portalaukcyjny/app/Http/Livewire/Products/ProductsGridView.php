@@ -29,7 +29,7 @@ class ProductsGridView extends GridView
     public $searchBy = [
         'name',
         'categories.name',
-        'coniditions.name',
+        'conditions.name',
         'price',
         'localization',
         'description'

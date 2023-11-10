@@ -39,19 +39,22 @@
         @endif
 
         </h3>
+        <hr class="my-1">
         @if ($categories)
             <span class="flex justify-end text-sm text-gray-600">
+              Kategorie: &nbsp;
                 @foreach ($categories as $category)
-                <span class="mr-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">{{$category->name}}
+                <span class="mr-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">{{ $category->name}}
                 </span>
                     
                 @endforeach
             </span>
         @endif
-      </div>
+      
 
       @if ($conditions)
-            <span class="flex justify-end text-sm text-gray-600">
+            <span class="flex justify-end text-sm text-gray-600 mt-1">
+              Stan: &nbsp;
                 @foreach ($conditions as $condition)
                 <span class="mr-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">{{$condition->name}}
                 </span>
@@ -59,24 +62,13 @@
                 @endforeach
             </span>
         @endif
+      
       </div>
-
       @if (count($actions))
         <div class="flex justify-end items-center">
           <x-lv-actions.drop-down :actions="$actions" :model="$model" />
         </div>
       @endif
     </div>
-
-    @if (isset($description))
-      <p class="p-4 line-clamp-3 mt-2">
-        {!! $description !!}
-      </p>
-    @endif
-
-    <span class="flex justify-center text-sm text-black-500 bg-gray-100">
-      {!! $localization !!}
-      
-      </span>
   </div>
 </div>
