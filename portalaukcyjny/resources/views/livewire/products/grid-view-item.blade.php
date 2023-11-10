@@ -12,10 +12,10 @@
   'selected' => false
 ])
 
-<div class="p-4 hover:shadow-lg hover:rounded-lg hover:border border-gray-100{{ $withBackground ? 'rounded-md shadow-md' : '' }}">
+<div class="p-4 {{ $withBackground ? 'rounded-md shadow-md' : '' }}">
   <a href="{{ route('products.show', $model->id) }}">
-    <img src="{{ $image }}" alt="{{ $image }}" class="rounded-md h-48 w-full object-cover {{ $withBackground ? 'rounded-b-none' : '' }}  {{ $selected ? variants('gridView.selected') : "" }}">
-  
+    <img src="{{ $image }}" alt="{{ $image }}" class="rounded-md h-48 w-full hover:shadow-lg object-cover {{ $withBackground ? 'rounded-b-none' : '' }}  {{ $selected ? variants('gridView.selected') : "" }}">
+  </a>
   <div class="p-4 pt-4 {{ $withBackground ? 'bg-white rounded-b-md p-4' : '' }}">
     <div class="flex items-start">
       <div class="flex-1">
@@ -79,5 +79,4 @@
       
       </span>
   </div>
-</a>
 </div>

@@ -40,7 +40,7 @@
                             {{ __('Cena:') }}
                     </div>
                     <div class="p-2">
-                        <span> {{ $product->price}} min.</span>
+                        <span> {{ $product->price}} PLN</span>
                     </div>
                 </div>
                 <hr class="my-2">
