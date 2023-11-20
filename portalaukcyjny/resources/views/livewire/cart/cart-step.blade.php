@@ -87,7 +87,7 @@
     </table>
 
     <div class="flex justify-end m-4">
-        <x-button wire:click right-icon="chevron-double-right" label="{{__('Dalej')}}" primary />
+        <x-button wire:click="nextStep" right-icon="chevron-double-right" label="{{__('Dalej')}}" primary />
     </div>
 
     </div>
