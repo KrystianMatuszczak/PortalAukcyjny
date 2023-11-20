@@ -15,20 +15,13 @@ class ShipmentSeeder extends Seeder
      */
     public function run()
     {
-        $csvFile = fopen(base_path("resources/csv/shipment.csv"), 'r');
-
-        $firstLine = false;
-        while(($data = fgetcsv($csvFile, 100, ';')) !== FALSE) {
-            if (!$firstLine) {
-                Shipment::create(
-                    [
-                        'name' => $data['0'],
-                        'shipPrice' => $data['1']
-                    ]);
-            }
-            $firstLine = false;
-        }
-
-        fclose($csvFile);
+        $condition = new Shipment(['name' => ' Przesyłka kurierska - przedpłata', 'shipPrice' => '17.99']);
+        $condition->save();
+        $condition = new Shipment(['name' => 'Przesyłka kurierska - pobranie', 'shipPrice' => '20.00']);
+        $condition->save();
+        $condition = new Shipment(['name' => 'List polecony - przedpłata', 'shipPrice' => '7.99']);
+        $condition->save();
+        $condition = new Shipment(['name' => 'Paczkomat', 'shipPrice' => '9.99']);
+        $condition->save();
     }
 }

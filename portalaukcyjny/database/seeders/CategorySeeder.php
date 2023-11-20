@@ -14,6 +14,37 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-      Category::factory()->count(10)->create();
+      $condition = new Category(['name' => 'Elektronika']);
+      $condition->save();
+      $condition = new Category(['name' => 'Moda']);
+      $condition->save();
+      $condition = new Category(['name' => 'Dom']);
+      $condition->save();
+      $condition = new Category(['name' => 'Ogród']);
+      $condition->save();
+      $condition = new Category(['name' => 'Supermarket']);
+      $condition->save();
+      $condition = new Category(['name' => 'Dziecko']);
+      $condition->save();
+      $condition = new Category(['name' => 'Uroda']);
+      $condition->save();
+      $condition = new Category(['name' => 'Zdrowie']);
+      $condition->save();
+      $condition = new Category(['name' => 'Sport']);
+      $condition->save();
+      $condition = new Category(['name' => 'Rozrywka']);
+      $condition->save();
+      $condition = new Category(['name' => 'Kultura']);
+      $condition->save();
+      $condition = new Category(['name' => 'Motoryzacja']);
+      $condition->save();
+      $condition = new Category(['name' => 'Nieruchomości']);
+      $condition->save();
+      $condition = new Category(['name' => 'Kolekcje']);
+      $condition->save();
+      $condition = new Category(['name' => 'Sztuka']);
+      $condition->save();
+      $condition = new Category(['name' => 'Usługi']);
+      $condition->save();
     }
 }
