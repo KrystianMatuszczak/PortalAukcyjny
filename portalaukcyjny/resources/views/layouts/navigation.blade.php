@@ -39,6 +39,10 @@
             </div>
 
             <!-- Settings Dropdown -->
+            <div class="hidden sm:flex sm:items-center">
+            <div class="border-gray-200">
+                <livewire:cart.cart-counter />
+            </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <div class="text-sm">
                 {{ __('Konto:') }}

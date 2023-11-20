@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -58,6 +59,9 @@ Route::get('async/categories', [CategoryController::class, 'async'])
 
   Route::get('async/shipments', [ShipmentController::class, 'async'])
   ->name('async.shipments');
+
+  Route::get('cart', [CartController::class, 'index'])
+  ->name('cart.index');
 
 Route::resource('products', ProductController::class)->only([
     'index', 'create', 'edit', 'show'

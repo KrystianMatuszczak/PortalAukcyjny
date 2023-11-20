@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\CartService;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -195,6 +196,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        App\Providers\CartServiceProvider::class,
     ],
 
     /*
@@ -210,6 +212,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'CartService' => CartService::class,
     ])->toArray(),
 
     'no_image' =>env('NO_IMAGE', 'no-image.png'),

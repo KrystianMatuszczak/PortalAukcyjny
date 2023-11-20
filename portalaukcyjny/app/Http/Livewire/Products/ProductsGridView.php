@@ -9,6 +9,7 @@ use App\Http\Livewire\Traits\Restore;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Livewire\Traits\SoftDelete;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Livewire\Products\Actions\AddToCartAction;
 use App\Http\Livewire\Products\Actions\EditProductAction;
 use App\Http\Livewire\Products\Actions\RestoreProductAction;
 use App\Http\Livewire\Products\Actions\SoftDeleteProductAction;
@@ -78,7 +79,9 @@ class ProductsGridView extends GridView
                 new RestoreProductAction(),
             ];
         } else {
-            return [];
+            return [
+                new AddToCartAction(),
+            ];
         }
     }
 }

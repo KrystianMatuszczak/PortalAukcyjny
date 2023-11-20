@@ -65,4 +65,9 @@ class Product extends Model
         return $this->image !== null    
             && Storage::disk('public')->exists($this->image);
     }
+
+    public function cost(int $qty): float
+    {
+        return $this->price * $qty;
+    }
 }
