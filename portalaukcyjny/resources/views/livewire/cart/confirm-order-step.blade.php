@@ -11,7 +11,7 @@
                             </h3>
                             <span class="text-sm text-gray-600">
                             {{__('Imie: ')}}
-                            {{ $delivery['name']}}
+                            {{ $delivery['firstName']}}
                             </span>
                             <span class="flex justify-start text-sm text-gray-600">
                             {{__('Nazwisko:' )}}

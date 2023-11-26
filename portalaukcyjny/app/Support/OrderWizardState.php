@@ -12,8 +12,8 @@ public function delivery(): array
 {
     $deliveryStepState = $this->forStep('delivery-step');
     return[
-        'name' => isset($deliveryStepState['name'])
-            ? $deliveryStepState['name']
+        'firstName' => isset($deliveryStepState['firstName'])
+            ? $deliveryStepState['firstName']
             : '',
         'lastName' => isset($deliveryStepState['lastName'])
         ? $deliveryStepState['lastName']

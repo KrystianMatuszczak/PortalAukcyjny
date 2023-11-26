@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\UserAddressDetails;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -72,5 +73,9 @@ class User extends Authenticatable
     public function unblock() {
       $this->blocked = false;
       $this->save();
+    }
+
+    public function userAddressDetails() {
+      return $this->hasOne(UserAddressDetails::class);
     }
 }
