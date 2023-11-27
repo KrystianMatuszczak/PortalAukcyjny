@@ -64,11 +64,18 @@
         @endif
       
       </div>
+
+      
       @if (count($actions))
         <div class="flex justify-end items-center">
           <x-lv-actions.drop-down :actions="$actions" :model="$model" />
         </div>
       @endif
     </div>
+    <hr class="my-10">
+    <span class="flex justify-center text-sm text-black-500 bg-gray-100">
+      {!! $localization !!}
+
+      </span>
   </div>
 </div>
