@@ -49,7 +49,7 @@ class ConfirmOrderStep extends StepComponent
     public function stepInfo(): array
     {
         return[
-            'label' => __('Potwierdzenie Rezerwacji'),
+            'label' => __('Potwierdzenie Zamówienia'),
             'icon' => 'check',
         ];
     }

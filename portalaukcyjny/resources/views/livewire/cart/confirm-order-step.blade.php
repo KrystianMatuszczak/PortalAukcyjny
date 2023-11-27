@@ -63,20 +63,34 @@
                 <th scope="col" class="py-3 px-6">
                     {{__('Cena')}}</span>
                 </th>
+                <th scope="col" class="py-3 px-6">
+                    {{__('Ilość')}}</span>
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    {{__('Łączny koszt')}}</span>
+                </th>
             </tr>
             </thead>
 
             <tbody>
-                @foreach ($this->items as $id => $car)
+                @foreach ($this->items as $id => $product)
                     <tr class="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
                         <td class="w-32 p-4">
-                            <img src="{{ $car->imageUrl() }}" alt="{{$car->name}}">
+                            <img src="{{ $product->imageUrl() }}" alt="{{$product->name}}">
                         </td>
                         <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                            {{$car->name}}
+                            {{$product->name}}
                         </td>
                         <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
                             {{ number_format($orderQtyAndCost[$id]['price'], 2)}}
+                            {{__('PLN')}}
+                        </td>
+                        <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                            {{ number_format($orderQtyAndCost[$id]['qty'])}}
+                            {{__('szt.')}}
+                        </td>
+                        <td class="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                            {{ number_format($orderQtyAndCost[$id]['cost'], 2)}}
                             {{__('PLN')}}
                         </td>
                     </tr>
