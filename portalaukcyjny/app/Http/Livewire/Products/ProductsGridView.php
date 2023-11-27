@@ -33,7 +33,7 @@ class ProductsGridView extends GridView
         'conditions.name',
         'price',
         'localization',
-        'description'
+        'description',
       ];
 
     public function repository(): Builder
@@ -58,6 +58,7 @@ class ProductsGridView extends GridView
             'price' => $model->price,
             'amount' => $model->amount,
             'localization' => $model->localization,
+
         ];
     }
 
@@ -78,10 +79,15 @@ class ProductsGridView extends GridView
                 new SoftDeleteProductAction(),
                 new RestoreProductAction(),
             ];
-        } else {
+        } elseif(request()->user()->can('create', Product::class)){
             return [
-                new AddToCartAction(),
+                new EditProductAction(
+                    'products.edit', 
+                    __('Edytuj')
+                ),
+                new SoftDeleteProductAction(),
+                new AddToCartAction()
             ];
-        }
+        } 
     }
 }

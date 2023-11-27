@@ -27,18 +27,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call(RoleSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(UserSeeder::class);
+        User::factory(10)->create()->each(function ($user) {
+            $user->assignRole(Role::findByName(config('auth.roles.user')));
+        });
         $this->call(CategorySeeder::class);
         $this->call(ConditionSeeder::class);
         $this->call(ShipmentSeeder::class);
         $this->call(ProductSeeder::class);
-        $this->call(RoleSeeder::class);
-        $this->call(PermissionSeeder::class);
-        $this->call(UserSeeder::class);
-
-        User::factory(10)->create()->each(function ($user) {
-            $user->assignRole(Role::findByName(config('auth.roles.user')));
-        });
-
         $users = User::all()->filter(function($item){
             if($item->id > 3)
             {

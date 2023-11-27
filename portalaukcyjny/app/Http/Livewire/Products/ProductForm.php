@@ -11,6 +11,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 class ProductForm extends Component
 {
@@ -129,6 +130,7 @@ class ProductForm extends Component
         $conditionsIds = $this->conditionsIds;
         $shipmentsIds = $this->shipmentsIds;
         $product = $this->product;
+        $product->user_id = Auth::user()->id;
         DB::transaction(function() use ($product, $categoriesIds, $conditionsIds, $shipmentsIds ,$image)
         {
             $product->save();

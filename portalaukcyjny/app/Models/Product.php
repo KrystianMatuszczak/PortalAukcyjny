@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Shipment;
 use App\Models\Condition;
@@ -23,7 +24,8 @@ class Product extends Model
         'price',
         'amount',
         'localization',
-        'image'
+        'image',
+        'user_id'
     ];
 
     public function categories()
@@ -69,5 +71,9 @@ class Product extends Model
     public function cost(int $qty): float
     {
         return $this->price * $qty;
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

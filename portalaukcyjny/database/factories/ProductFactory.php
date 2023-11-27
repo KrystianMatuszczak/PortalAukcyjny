@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->optional->text(50),
             'price' => $this->faker->randomFloat(2, 10, 100),
             'amount' => $this->faker->numberBetween(1, 100),
+            'user_id' => rand(1, User::count()),
             'localization' => $this->faker->city(),
             'created_at' => $this->faker->dateTimeBetween(
                 '- 8 weeks',

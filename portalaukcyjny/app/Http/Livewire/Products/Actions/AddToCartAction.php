@@ -29,4 +29,8 @@ class AddToCartAction extends Action
             );
             $view->emit('cartUpdated');
     }
+    public function renderIf($item, View $view)
+    {
+        return request()->user()->can('addToCart', $item);
+    }
 }

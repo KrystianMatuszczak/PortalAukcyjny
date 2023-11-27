@@ -78,4 +78,8 @@ class User extends Authenticatable
     public function userAddressDetails() {
       return $this->hasOne(UserAddressDetails::class);
     }
+    public function products()
+    {
+      return $this->hasMany(Product::class);
+    }
 }

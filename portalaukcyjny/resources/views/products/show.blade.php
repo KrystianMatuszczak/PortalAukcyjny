@@ -43,6 +43,26 @@
                         <span> {{ $product->price}} PLN</span>
                     </div>
                 </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="p-2">
+                            {{ __('Sprzedawca:') }}
+                    </div>
+                    @if(!$product->user->trusted)
+                    <div class="p-2">
+                        <span> {{ $product->user->name}} &nbsp;</span>
+                    </div>
+                    @else
+                    <div class="p-2">
+                        <span> {{ $product->user->name}}</span>
+                        <div class="flex">
+                        <x-icon name="sparkles" class="w-4 h-4 text-violet-500" solid/>
+                        <p class="text-xs text-gray-600">Zaufany sprzedawca</p>
+                        </div>
+                    </div>
+                    @endif
+                    
+                    
+                </div>
                 <hr class="my-2">
                 <span class="flex justify-end text-sm text-gray-600">
                     {{ __('Kategorie:') }}
@@ -50,7 +70,7 @@
                        <span class="mr-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">{{ $category->name }}</span>
                    @endforeach
                </span>
-               <hr class="my-2">
+    
                 <span class="flex justify-end text-sm text-gray-600">
                     {{ __('Stany:') }}
                    @foreach ($product->conditions as $condition )
