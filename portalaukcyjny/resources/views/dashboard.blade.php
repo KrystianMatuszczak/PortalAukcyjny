@@ -23,6 +23,8 @@
         Działamy na rzecz zapewnienia bezpiecznego i wygodnego środowiska dla osób poszukujących możliwości zarówno sprzedaży, jak i zakupu różnorodnych przedmiotów. Z nami każdy może znaleźć interesujące go produkty, bez względu na to, czy są to nowe inwestycje czy poszukiwania unikatowych rzeczy z drugiej ręki.
       </p>
       <a href="/products" class="btn">Rozpocznij Zakupy</a>
+      <br/><br/>
+      <a href="/howToSell" class="btn">Zobacz jak sprzedawać swoje produkty</a>
     </section>
   </main>
 
@@ -64,7 +66,7 @@
 </div>
 
 <div class="row">
-Copyright © 2021 - All rights reserved 
+Copyright © 2023 
 </div>
 </div>
 

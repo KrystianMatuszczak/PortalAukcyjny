@@ -34,6 +34,10 @@ Route::name('users.')->prefix('users')->group(
           ->middleware(['permission:users.index']);
   });
 
+  Route::get('/howToSell', function () {
+    return view('howToSell');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -66,5 +70,7 @@ Route::get('async/categories', [CategoryController::class, 'async'])
 Route::resource('products', ProductController::class)->only([
     'index', 'create', 'edit', 'show'
   ])->middleware(['auth', 'verified']);
+
+  
 
 require __DIR__.'/auth.php';
