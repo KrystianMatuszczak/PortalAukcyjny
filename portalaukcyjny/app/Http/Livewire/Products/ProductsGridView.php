@@ -13,6 +13,9 @@ use App\Http\Livewire\Products\Actions\AddToCartAction;
 use App\Http\Livewire\Products\Actions\EditProductAction;
 use App\Http\Livewire\Products\Actions\RestoreProductAction;
 use App\Http\Livewire\Products\Actions\SoftDeleteProductAction;
+use App\Http\Livewire\Products\Filters\InputCategoryFilter;
+use App\Http\Livewire\Products\Filters\InputConditionFilter;
+use App\Http\Livewire\Products\Filters\UserProductsFilter;
 
 class ProductsGridView extends GridView
 {
@@ -60,6 +63,11 @@ class ProductsGridView extends GridView
             'localization' => $model->localization,
 
         ];
+    }
+    protected function filters()
+    {
+        return [ new UserProductsFilter,
+    new InputConditionFilter];
     }
 
     public function getPaginatedQueryProperty()

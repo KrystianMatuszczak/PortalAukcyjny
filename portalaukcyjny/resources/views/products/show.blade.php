@@ -82,7 +82,9 @@
                 <x-button href="{{ url()->previous() }}" secondary class="mr-2" label="Wróć" />
                 <x-button href="#" icon="shopping-cart" secondary class="mr-2" label="Dodaj do koszyka"/>
                 </div>
+            </div>
         </div>
-        </div>
+        
     </div>
+    
 </x-app-layout>

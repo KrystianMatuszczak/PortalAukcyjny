@@ -16,4 +16,30 @@
       <livewire:categories.categories-table-view />
     </div>
   </div>
+    <!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+  <div class="footer">
+<div class="row">
+<a href="#"><i class="fa fa-facebook"></i></a>
+<a href="#"><i class="fa fa-instagram"></i></a>
+<a href="#"><i class="fa fa-youtube"></i></a>
+<a href="#"><i class="fa fa-twitter"></i></a>
+</div>
+
+<div class="grid-container">
+  <div class="grid-item"><a href="#">About us</a></div>
+  <div class="grid-item"><a href="#">Contact</a></div>
+  <div class="grid-item"><a href="#">FAQ</a></div>
+</div>
+
+<div class="row">
+Copyright © 2023 
+</div>
+</div>
 </x-app-layout>
