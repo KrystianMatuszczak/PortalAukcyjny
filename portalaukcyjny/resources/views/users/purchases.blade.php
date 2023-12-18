@@ -6,12 +6,17 @@
     </header>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" id="table-view-wrapper">
-              @foreach($purchases as $purchase)
-                <p>{{ __('Zakup: ') }}</p>
-                {{ $purchase }}
-                {{ $purchase->products }}
-              @endforeach
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" id="table-view-wrapper">  
+                  @foreach($purchases as $purchase)
+                    @foreach($purchase->products as $product)
+                    
+                    <div class="py-5">
+                    Nazwa: {{ $product->name}}
+                    Cena: {{ $product->price}}
+                
+                    @endforeach
+                    @endforeach
+
             </div>
         </div>
     </div>
