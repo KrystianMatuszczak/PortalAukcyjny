@@ -35,6 +35,10 @@
                     <x-nav-link href="{{ route('shipments.index') }}" :active="request()->routeIs('shipments.index')">
                         {{ __('Metody dostawy') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('purchases') }}">
+                        {{ __('Moje zakupy') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::name('users.')->prefix('users')->group(
   function(){
       Route::get('',[UserController::class, 'index'])
@@ -66,5 +67,7 @@ Route::get('async/categories', [CategoryController::class, 'async'])
 Route::resource('products', ProductController::class)->only([
     'index', 'create', 'edit', 'show'
   ])->middleware(['auth', 'verified']);
+
+Route::get('purchases', [UserController::class, 'purchases'])->name('purchases');
 
 require __DIR__.'/auth.php';

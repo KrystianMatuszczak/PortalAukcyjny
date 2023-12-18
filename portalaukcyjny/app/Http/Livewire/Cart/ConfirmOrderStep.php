@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\Cart;
 
-use App\Models\Product;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Purchase;
+use App\Facades\CartService;
 use App\Models\UserAddressDetails;
 use Illuminate\Support\Facades\Auth;
 use Spatie\LivewireWizard\Components\StepComponent;
@@ -13,8 +15,12 @@ class ConfirmOrderStep extends StepComponent
     public $orderQtyAndCost;
     public User $user;
     public UserAddressDetails $userAddressDetails;
+    public Purchase $purchase;
+    public array $qty;
 
-    public function mount() {
+    public function mount()
+    {
+      $this->qty = CartService::qty();
       $this->orderQtyAndCost = $this->state()->qtyAndCost();
       $this->user = Auth::user();
   
@@ -40,23 +46,32 @@ class ConfirmOrderStep extends StepComponent
 
     public function getItemsProperty()
     {
-        return Product::whereIn(
-            'id',
-            array_keys($this->orderQtyAndCost)
-        )->get()->keyBy('id');
+        return Product::whereIn('id', array_keys($this->qty))
+        ->get()->keyBy('id');
     }
 
     public function stepInfo(): array
     {
         return[
-            'label' => __('Potwierdzenie Zamówienia'),
+            'label' => __('Potwierdzenie Rezerwacji'),
             'icon' => 'check',
         ];
     }
 
     public function submit()
     {
-        return view('orders.index');
+      $this->purchase = new Purchase([
+        'buyer_id' => Auth::user()->id
+      ]);
+      foreach ($this->items as $product) {
+        $product->amount -= $this->qty[$product->id];
+        $product->save();
+      }
+      $this->purchase->save();
+      $this->purchase->products()->sync($this->items);
+      CartService::clear();
+      $this->emit('cartUpdated');
+      return redirect()->to('purchases');
     }
 
     public function render()
